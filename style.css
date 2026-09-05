@@ -1,0 +1,124 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --text: #172033;
+  --muted: #68738a;
+  --border: #dbe2ee;
+  --accent: #5b5cf0;
+  --accent-dark: #4445c9;
+  --start: #19a974;
+  --goal: #e94b65;
+  --wall: #20283a;
+  --visited: #b9c5ff;
+  --path: #ffd166;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+.topbar {
+  padding: 22px clamp(16px, 4vw, 56px);
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+h1 { margin: 0; font-size: clamp(26px, 4vw, 38px); }
+.topbar p { margin: 5px 0 0; color: var(--muted); }
+.badge {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 13px;
+}
+.app { width: min(1050px, 94vw); margin: 24px auto 45px; }
+.panel, .stats > div {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.controls { padding: 18px; }
+.control-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+button, select {
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+button:hover { transform: translateY(-1px); }
+button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+.options { margin-top: 13px; }
+label { color: var(--muted); font-size: 14px; font-weight: 650; }
+select { margin-left: 7px; font-weight: 600; }
+.switch-label { display: flex; gap: 8px; align-items: center; }
+.help { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 15px 0; }
+.stats > div { padding: 14px; }
+.stats span { display: block; color: var(--muted); font-size: 12px; }
+.stats strong { display: block; margin-top: 5px; font-size: 18px; }
+.board-wrap {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: auto;
+}
+.grid {
+  width: min(82vw, 760px);
+  aspect-ratio: 1;
+  display: grid;
+  gap: 2px;
+  user-select: none;
+  touch-action: none;
+}
+.cell {
+  background: #f9fbff;
+  border: 1px solid #e7ebf3;
+  min-width: 0;
+  cursor: crosshair;
+  transition: background .12s, transform .12s;
+}
+.cell.wall { background: var(--wall); border-color: var(--wall); }
+.cell.start { background: var(--start); border-color: var(--start); }
+.cell.goal { background: var(--goal); border-color: var(--goal); }
+.cell.visited { background: var(--visited); border-color: #aab7f5; }
+.cell.path { background: var(--path); border-color: #f0c14f; transform: scale(.93); border-radius: 3px; }
+.legend { margin-top: 15px; padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 18px; }
+.legend span { display: flex; gap: 7px; align-items: center; font-size: 13px; color: var(--muted); font-weight: 650; }
+.legend i { width: 16px; height: 16px; border-radius: 4px; display: inline-block; border: 1px solid var(--border); }
+.legend .start { background: var(--start); }
+.legend .goal { background: var(--goal); }
+.legend .wall { background: var(--wall); }
+.legend .visited { background: var(--visited); }
+.legend .path { background: var(--path); }
+.info { margin-top: 15px; padding: 18px; }
+.info h2 { margin: 0 0 7px; font-size: 20px; }
+.info p { color: var(--muted); line-height: 1.6; }
+.formula {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #f2f3ff;
+  color: var(--accent-dark);
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 18px;
+}
+footer { text-align: center; color: var(--muted); padding: 0 15px 25px; font-size: 12px; }
+@media (max-width: 650px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .grid { width: 90vw; }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Solver — A* Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Maze Solver</h1>
+      <p>A* Search Algorithm Visualizer</p>
+    </div>
+    <div class="badge">Artificial Intelligence • Project 1</div>
+  </header>
+
+  <main class="app">
+    <section class="panel controls">
+      <div class="control-row">
+        <button id="solveBtn" class="primary">▶ Solve with A*</button>
+        <button id="clearPathBtn">Clear Path</button>
+        <button id="clearWallsBtn">Clear Walls</button>
+        <button id="randomBtn">Random Maze</button>
+      </div>
+
+      <div class="control-row options">
+        <label>Grid
+          <select id="sizeSelect">
+            <option value="15">15 × 15</option>
+            <option value="20" selected>20 × 20</option>
+            <option value="25">25 × 25</option>
+          </select>
+        </label>
+        <label>Heuristic
+          <select id="heuristicSelect">
+            <option value="manhattan" selected>Manhattan</option>
+            <option value="euclidean">Euclidean</option>
+          </select>
+        </label>
+        <label class="switch-label">
+          <input type="checkbox" id="animationToggle" checked>
+          Animate search
+        </label>
+      </div>
+
+      <p class="help">
+        Click cells to draw/remove walls. Drag the <b>green Start</b> or
+        <b>red Goal</b> cell to move them. Then run A* to find the shortest path.
+      </p>
+    </section>
+
+    <section class="stats">
+      <div><span>Visited</span><strong id="visitedStat">0</strong></div>
+      <div><span>Path length</span><strong id="pathStat">—</strong></div>
+      <div><span>Time</span><strong id="timeStat">0 ms</strong></div>
+      <div><span>Status</span><strong id="statusStat">Ready</strong></div>
+    </section>
+
+    <section class="board-wrap">
+      <div id="grid" class="grid" aria-label="Maze grid"></div>
+    </section>
+
+    <section class="legend panel">
+      <span><i class="start"></i> Start</span>
+      <span><i class="goal"></i> Goal</span>
+      <span><i class="wall"></i> Wall</span>
+      <span><i class="visited"></i> Visited</span>
+      <span><i class="path"></i> Shortest path</span>
+    </section>
+
+    <section class="panel info">
+      <h2>How A* Works</h2>
+      <p>
+        A* selects the next node using <code>f(n) = g(n) + h(n)</code>.
+        <b>g(n)</b> is the cost from Start to the current cell and
+        <b>h(n)</b> estimates the remaining cost to Goal.
+      </p>
+      <div class="formula">
+        f(n) = g(n) + h(n)
+      </div>
+    </section>
+  </main>
+
+  <footer>Built for Syntecxhub AI Internship • Maze Solver using A* Search Algorithm</footer>
+  <script src="script.js"></script>
+</body>
+</html>
